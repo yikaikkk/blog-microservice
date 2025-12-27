@@ -1,20 +1,24 @@
 package com.blog.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.blog.entity.Job;
 import com.blog.enums.JobStatusEnum;
 import com.blog.mapper.JobMapper;
 import com.blog.model.dto.JobDTO;
 import com.blog.model.dto.PageResultDTO;
-import com.blog.model.vo.*;
+import com.blog.model.vo.JobRunVO;
+import com.blog.model.vo.JobSearchVO;
+import com.blog.model.vo.JobStatusVO;
+import com.blog.model.vo.JobVO;
 import com.blog.service.JobService;
 import com.blog.util.BeanCopyUtil;
 import com.blog.util.CronUtil;
 import com.blog.util.PageUtil;
 import com.blog.util.ScheduleUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.SneakyThrows;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -29,6 +33,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@DubboService(version ="1.0.0")
 public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobService {
 
     @Autowired

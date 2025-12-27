@@ -1,9 +1,9 @@
 package com.blog.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.blog.entity.UserRole;
 import com.blog.mapper.UserRoleMapper;
 import com.blog.service.UserRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service

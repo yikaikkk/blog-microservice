@@ -7,8 +7,6 @@ import com.blog.model.vo.*;
 import com.blog.service.JobService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +18,7 @@ import static com.blog.constant.OptTypeConstant.*;
 @RestController
 public class JobController {
 
-    @DubboReference(version = "1.0.0")
+    @Autowired
     private JobService jobService;
 
     @OptLog(optType = SAVE)

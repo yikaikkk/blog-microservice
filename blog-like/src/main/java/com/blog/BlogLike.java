@@ -12,12 +12,13 @@ import org.springframework.web.client.RestTemplate;
 @EnableDubbo
 @EnableDiscoveryClient
 @MapperScan("com.blog.mapper")
-public class BlogConsumer {
+public class BlogLike {
     public static void main(String[] args) {
-        SpringApplication.run(BlogConsumer.class, args);
+        SpringApplication.run(BlogLike.class, args);
     }
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
 }

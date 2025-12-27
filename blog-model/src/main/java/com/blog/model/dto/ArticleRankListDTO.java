@@ -4,11 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleRankListDTO {
+public class ArticleRankListDTO implements Serializable {
     private Integer articleId;
     private Integer viewsCount;
     private String articleTitle;

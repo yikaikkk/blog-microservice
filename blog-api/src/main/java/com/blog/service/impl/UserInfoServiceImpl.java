@@ -1,5 +1,7 @@
 package com.blog.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.blog.entity.UserAuth;
 import com.blog.entity.UserInfo;
 import com.blog.entity.UserRole;
@@ -19,8 +21,6 @@ import com.blog.service.UserRoleService;
 import com.blog.strategy.context.UploadStrategyContext;
 import com.blog.util.BeanCopyUtil;
 import com.blog.util.UserUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
