@@ -57,4 +57,20 @@ public class RabbitMQConfig {
         return BindingBuilder.bind(subscribeQueue()).to(subscribeExchange());
     }
 
+    // 点赞队列
+    @Bean
+    public Queue likeQueue() {
+        return new Queue(LIKE_QUEUE, true);
+    }
+
+    @Bean
+    public FanoutExchange likeExchange() {
+        return new FanoutExchange(LIKE_EXCHANGE, true, false);
+    }
+
+    @Bean
+    public Binding bindingLikeDirect() {
+        return BindingBuilder.bind(likeQueue()).to(likeExchange());
+    }
+
 }

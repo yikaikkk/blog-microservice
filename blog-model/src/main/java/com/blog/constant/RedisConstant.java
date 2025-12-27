@@ -24,4 +24,8 @@ public interface RedisConstant {
 
     String ARTICLE_ACCESS = "article_access:";
 
+    String ARTICLE_LIKE_COUNT="article_like_count";
+
+    String ARTICLE_LIKE_USERS="article_like_users:";
+
 }

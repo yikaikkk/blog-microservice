@@ -119,5 +119,8 @@ public interface RedisService {
 
     List<String> geoGetHash(String key, String... place);
 
+    //封装lua脚本
+    Long executeLuaScript(String luaScript, List<String> keys, List<String> args);
+
 }
 

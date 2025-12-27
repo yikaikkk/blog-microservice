@@ -37,5 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 **/application-prod.yml
-
+**/bootstrap.yml
 .idea

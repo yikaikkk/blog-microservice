@@ -6,6 +6,11 @@ public interface RabbitMQConstant {
 
     String MAXWELL_EXCHANGE = "maxwell_exchange";
 
+    // 点赞队列
+    String LIKE_QUEUE = "like_queue";
+
+    String LIKE_EXCHANGE = "like_exchange";
+
     String EMAIL_QUEUE = "email_queue";
 
     String EMAIL_EXCHANGE = "email_exchange";
