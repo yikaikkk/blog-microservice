@@ -6,6 +6,7 @@ import com.blog.entity.Article;
 import com.blog.mapper.ArticleMapper;
 import com.blog.model.dto.ArticleLikeDTO;
 import com.blog.model.dto.ArticleRankListDTO;
+import com.blog.service.AddArticleLikeService;
 import com.blog.service.ArticleLikeService;
 import com.blog.service.RedisService;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -20,13 +21,13 @@ import java.util.stream.Collectors;
 import static com.blog.constant.RedisConstant.*;
 
 @DubboService(version = "1.0.0")
-public class ArticleLikeServiceImpl implements ArticleLikeService {
+public class AddArticleLikeServiceImpl implements AddArticleLikeService {
     //构造器注入
     private final RedisService redisService;
     private final ArticleMapper articleMapper; 
      private final RabbitTemplate rabbitTemplate; 
     //构造器注入
-    public ArticleLikeServiceImpl(RedisService redisService, ArticleMapper articleMapper, RabbitTemplate rabbitTemplate) {
+    public AddArticleLikeServiceImpl(RedisService redisService, ArticleMapper articleMapper, RabbitTemplate rabbitTemplate) {
         this.redisService = redisService;
         this.articleMapper = articleMapper;
         this.rabbitTemplate = rabbitTemplate;
