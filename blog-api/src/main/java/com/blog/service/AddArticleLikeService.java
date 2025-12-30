@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface AddArticleLikeService {
     //添加点赞
-    Boolean addLike(int articleId,String userId);
+    Boolean addLike(int articleId,Integer userId);
 
     //取消点赞
-    Boolean removeLike(int articleId,String userId);
+    Boolean removeLike(int articleId,Integer userId);
 
     //查询用户是否点赞
-    Boolean isLiked(int articleId,String userId);
+    Boolean isLiked(int articleId,Integer userId);
 
     //查询文章点赞数
     Integer getLikeCount(int articleId);

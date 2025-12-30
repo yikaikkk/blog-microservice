@@ -34,7 +34,7 @@ public class AddArticleLikeServiceImpl implements AddArticleLikeService {
     }
 
     @Override
-    public Boolean addLike(int articleId,String userId) {
+    public Boolean addLike(int articleId,Integer userId) {
         //使用lua脚本实现
         String luaScript = "if redis.call('sismember', KEYS[1], ARGV[1]) == 1 then return 0 end " +
         "redis.call('zincrby', KEYS[2], 1, ARGV[2]) " +
@@ -45,7 +45,7 @@ public class AddArticleLikeServiceImpl implements AddArticleLikeService {
         List<String> args = new ArrayList<>();
         keys.add(ARTICLE_LIKE_USERS + articleId);
         keys.add(ARTICLE_LIKE_COUNT);
-        args.add(userId);
+        args.add(String.valueOf(userId));
         args.add(String.valueOf(articleId));
 
         Long result = redisService.executeLuaScript(luaScript, keys, args); 
@@ -64,7 +64,7 @@ public class AddArticleLikeServiceImpl implements AddArticleLikeService {
     }
 
     @Override
-    public Boolean removeLike(int articleId,String userId) {
+    public Boolean removeLike(int articleId,Integer userId) {
         //使用lua脚本实现
         String luaScript = "if redis.call('sismember', KEYS[1], ARGV[1]) == 0 then return 0 end " +
         "redis.call('zincrby', KEYS[2], -1, ARGV[2]) " +
@@ -75,7 +75,7 @@ public class AddArticleLikeServiceImpl implements AddArticleLikeService {
         List<String> args = new ArrayList<>();
         keys.add(ARTICLE_LIKE_USERS + articleId);
         keys.add(ARTICLE_LIKE_COUNT);
-        args.add(userId);
+        args.add(String.valueOf(userId));
         args.add(String.valueOf(articleId));
 
         Long result = redisService.executeLuaScript(luaScript, keys, args); 
@@ -94,7 +94,7 @@ public class AddArticleLikeServiceImpl implements AddArticleLikeService {
     }
 
     @Override
-    public Boolean isLiked(int articleId,String userId) {
+    public Boolean isLiked(int articleId,Integer userId) {
         return redisService.sIsMember(ARTICLE_LIKE_USERS + articleId, userId);
     }
 
