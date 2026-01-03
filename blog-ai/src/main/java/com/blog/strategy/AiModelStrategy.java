@@ -3,7 +3,7 @@ package com.blog.strategy;
 import com.blog.config.AbstractAiConfig;
 import com.blog.config.ZhipuConfig;
 
-import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.zhipu.ZhipuAiChatModel;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class AiModelStrategy {
      @Autowired
      private AbstractAiConfig[] abstractAiConfig;
 
-    private Map<String, ChatModel> modelMap = new HashMap<>();
+    private Map<String, ChatLanguageModel> modelMap = new HashMap<>();
 
      @PostConstruct
      public void AiModelStrategyInit() {
@@ -39,7 +39,7 @@ public class AiModelStrategy {
          for (AbstractAiConfig config : abstractAiConfig) {
             if(config.getName().equals("zhipu")){
                 log.debug("初始化zhipu模型:{}", config.getModel());
-                modelMap.put(config.getModel(), (ChatModel) ZhipuInit((ZhipuConfig) config));
+                modelMap.put(config.getModel(), ZhipuInit((ZhipuConfig) config));
             }
          }
          for (String model : modelMap.keySet()) {
@@ -73,6 +73,6 @@ public class AiModelStrategy {
      * @return 模型回复
      */
     public String chat(String model, String prompt) {
-        return modelMap.get(model).chat(prompt);
+        return modelMap.get(model).generate(prompt);
     }
 }

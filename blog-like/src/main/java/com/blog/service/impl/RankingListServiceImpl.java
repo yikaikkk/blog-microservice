@@ -50,6 +50,11 @@ public class RankingListServiceImpl implements RankingListService {
                    .articleTitle(articleTitleMap.get((Integer) entry.getKey()))
                    .build());
        }
+       //按照viewsCount排序
+       articleRankDTOList.sort(Comparator.comparing(ArticleRankListDTO::getViewsCount).reversed()); 
+       //删除articleTitle为空的
+       articleRankDTOList.removeIf(articleRankListDTO -> articleRankListDTO.getArticleTitle() == null);
+    //    articleRankDTOList.removeIf(articleRankListDTO -> !articleTitleMap.containsKey(articleRankListDTO.getArticleId()));
         return articleRankDTOList;
     }
 

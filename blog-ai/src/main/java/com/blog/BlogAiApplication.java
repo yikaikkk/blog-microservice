@@ -1,8 +1,6 @@
 package com.blog;
 
-import dev.langchain4j.model.openai.OpenAiChatModel;
-import dev.langchain4j.model.zhipu.ZhipuAiChatModel;
-import dev.langchain4j.model.zhipu.ZhipuAiClient;
+
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
