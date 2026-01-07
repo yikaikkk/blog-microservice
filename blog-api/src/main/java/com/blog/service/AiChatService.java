@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import reactor.core.publisher.Flux;
+
 public interface AiChatService {
     /**
      * 调用模型
@@ -8,6 +10,9 @@ public interface AiChatService {
      * @return 模型回复
      */
     String chat(String model, String prompt);
+
+
+    Flux<String> chatStream(String model, String prompt);
 
     
 }
