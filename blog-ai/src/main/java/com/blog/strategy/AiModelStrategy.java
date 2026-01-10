@@ -52,17 +52,31 @@ public class AiModelStrategy {
 
          for (AbstractAiConfig config : abstractAiConfig) {
             if(config.getName().equals("zhipu")){
-                log.debug("初始化zhipu模型:{}", config.getModel());
+                log.info("初始化zhipu模型:{}", config.getModel());
                 modelMap.put(config.getModel(), ZhipuInit((ZhipuConfig) config));
             }
          }
 
          for (AbstractAiConfig config : abstractAiConfig) {
             if(config.getName().equals("zhipu")){
-                log.debug("初始化zhipu流式模型:{}", config.getModel());
+                log.info("初始化zhipu流式模型:{}", config.getModel());
                 streamingModelMap.put(config.getModel(), streamingChatLanguageModelInit((ZhipuConfig) config));
             }
          }
+
+//        for(String model : modelMap.keySet()){
+//
+//            log.info("初始化zhipu模型:{}", modelMap.get(model));
+//         }
+//
+//
+//         for(String model : streamingModelMap.keySet()){
+//
+//            log.info("初始化zhipu流式模型:{}", streamingModelMap.get(model));
+//         }
+
+
+         
 
 
          for (String model : modelMap.keySet()) {
@@ -90,7 +104,7 @@ public class AiModelStrategy {
     }
 
     public StreamingChatLanguageModel streamingChatLanguageModelInit(ZhipuConfig zhipuConfig) {
-        log.info("初始化zhipu模型:{}", zhipuConfig.getModel());
+        log.info("初始化zhipu流式模型:{}", zhipuConfig.getModel());
         log.info("zhipu模型配置:{}", zhipuConfig);
         
         return ZhipuAiStreamingChatModel.builder()
@@ -113,6 +127,7 @@ public class AiModelStrategy {
      * @return 模型回复
      */
     public String chat(String model, String prompt) {
+        log.info("调用模型:{} 提示词:{}", model, prompt);   
         return modelMap.get(model).generate(prompt);
     }
 
